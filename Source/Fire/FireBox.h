@@ -99,8 +99,11 @@ public:
 	) override;
 
 	// Notifications
+	UFUNCTION(BlueprintCallable, Category = "Flammable")
 	void Damage(int damage);   // Take damage -- take alot to instantly light
 
+	UFUNCTION(BlueprintCallable, Category = "Flammable")
+	void Wet(int value);
 
 							   // Remove this from the world
 	void Remove();

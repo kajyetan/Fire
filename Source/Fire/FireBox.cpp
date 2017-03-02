@@ -474,6 +474,11 @@ void UFireBox::Damage(int damage) {
 	}
 }
 
+void UFireBox::Wet(int value)
+{
+	fuel -= value;
+}
+
 
 
 void UFireBox::Remove() {
