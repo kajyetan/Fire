@@ -101,6 +101,7 @@ public:
 	// Notifications
 	void Damage(int damage);   // Take damage -- take alot to instantly light
 
+
 							   // Remove this from the world
 	void Remove();
 

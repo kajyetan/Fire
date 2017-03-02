@@ -474,6 +474,8 @@ void UFireBox::Damage(int damage) {
 	}
 }
 
+
+
 void UFireBox::Remove() {
 	deactivated = true;
 	// Remove this object
