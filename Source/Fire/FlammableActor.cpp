@@ -259,6 +259,8 @@ void AFlammableActor::BeginPlay()
 
 		box->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Overlap);
 
+		box->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Block);
+
 		// Create a particle system that we can activate or deactivate
 		UParticleSystemComponent * fireParticle = NewObject<UParticleSystemComponent>(this);
 
