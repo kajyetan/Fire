@@ -15,22 +15,10 @@ AFlammableActor::AFlammableActor()
 
 	this->GetStaticMeshComponent()->CreateDynamicMaterialInstance(0, this->GetStaticMeshComponent()->GetMaterial(0));
 
+	shaderController.init();
+
 }
 
-
-// Basic data holder for a particular cube of fire
-struct FireCube {
-	// Box associated with this cube
-	UPrimitiveComponent * box;
-	// Fire associated with this cube
-	UParticleSystemComponent * fire;
-	// Health before catching fire 
-	int health;
-	// Fuel, i.e. how long left to burn
-	int fuel;
-	// Burning?
-	bool burning;
-};
 
 
 void AFlammableActor::AddBurningBox(UFireBox * box) {

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Engine/StaticMeshActor.h"
+#include "ShaderController.h"
 #include "FireBox.h"
 #include "FlammableActor.generated.h"
 
@@ -22,8 +23,10 @@ private:
 	int numberOfBoxes;
 	int numberOfBoxesOnFire;
 
+	ShaderController shaderController;
+
 	UPROPERTY()
-		TArray<UFireBox *> boxesOnFire;
+	TArray<UFireBox *> boxesOnFire;
 
 	void UpdateMaterialBoxes();
 
