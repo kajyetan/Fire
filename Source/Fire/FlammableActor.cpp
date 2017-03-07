@@ -63,6 +63,13 @@ void AFlammableActor::Tick(float DeltaTime) {
 
 	//	UE_LOG(LogTemp, Warning, TEXT("Location: %s, Extent: %s"), *boxes[0]->GetComponentLocation().ToString(), *boxes[0]->GetScaledBoxExtent().ToString()); 
 	//	flameController.update();
+
+	// Draw boxes -- do it here beacuse we have reference to world
+	shaderController.ConsolidateBoxes();
+	for (auto b : shaderController.GetBoxes()) {
+		DrawDebugBox(GetWorld(), b->GetBox().GetCenter(), b->GetBox().GetExtent(), FColor(0, 255, 0), true, 0.25f, 0, 3.0f);
+	}
+
 }
 
 void AFlammableActor::printNumberOfBoxes()
@@ -82,6 +89,13 @@ void AFlammableActor::incrementBoxesOnFire()
 void AFlammableActor::decrementBoxes()
 {
 	numberOfBoxes--;
+}
+
+void AFlammableActor::RegisterBoxWithShader(UFireBox * box)
+{
+	// Take a box and register it as burnt with the shader
+	shaderController.AddBox(box->GetComponentLocation(), box->GetScaledBoxExtent());
+
 }
 
 

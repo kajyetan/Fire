@@ -462,6 +462,7 @@ void UFireBox::Damage(int damage) {
 			if (this->GetAttachmentRootActor()->IsA(AFlammableActor::StaticClass())) {
 				((AFlammableActor *) this->GetAttachmentRootActor())->incrementBoxesOnFire();
 				((AFlammableActor *) this->GetAttachmentRootActor())->AddBurningBox(this);
+				((AFlammableActor *) this->GetAttachmentRootActor())->RegisterBoxWithShader(this);
 			}
 
 			//	UE_LOG(LogTemp, Warning, TEXT("Catching Fire"));

@@ -47,6 +47,8 @@ public:
 
 	void decrementBoxes();
 
+	void RegisterBoxWithShader(UFireBox * box);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Flammable)
 		float FireBoxSize = 20.0f;
 
