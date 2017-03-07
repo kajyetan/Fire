@@ -15,8 +15,6 @@ AFlammableActor::AFlammableActor()
 
 	this->GetStaticMeshComponent()->CreateDynamicMaterialInstance(0, this->GetStaticMeshComponent()->GetMaterial(0));
 
-	shaderController.init();
-
 }
 
 
@@ -187,7 +185,7 @@ void AFlammableActor::BeginPlay()
 
 	// Here we go againnnnnn
 
-
+	shaderController.init(VolumePreservationRatio);
 
 
 	/* Get Actor Bounds */

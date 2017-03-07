@@ -49,6 +49,7 @@ public:
 
 	void RegisterBoxWithShader(UFireBox * box);
 
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Flammable)
 		float FireBoxSize = 20.0f;
 
@@ -79,6 +80,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Flammable)
 		TArray<UBoxComponent *> boxMasks;
 
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Flammable)
+		float VolumePreservationRatio = 1.2f;
 
 };

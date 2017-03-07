@@ -13,7 +13,7 @@ private:
 	// Final output boxes, bounded by 100
 	TArray<FBoxSphereBounds *> ShaderBoxes;
 
-	const float VolumeIncreaseLimit = 3.0f;
+	float VolumeIncreaseLimit;
 
 
 
@@ -22,7 +22,7 @@ public:
 
 	~ShaderController();
 
-	void init();
+	void init(float VolumeIncreaseLimit);
 
 	void AddBox(FVector location, FVector extent);
 

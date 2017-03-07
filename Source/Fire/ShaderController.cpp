@@ -50,6 +50,7 @@ bool ShaderController::ConsolidateBoxes()
 
 ShaderController::ShaderController()
 {
+
 }
 
 ShaderController::~ShaderController()
@@ -57,9 +58,9 @@ ShaderController::~ShaderController()
 }
 
 
-void ShaderController::init() {
+void ShaderController::init(float limit) {
 	// Basic init function, currently does nothing
-
+	VolumeIncreaseLimit = limit;
 }
 
 void ShaderController::AddBox(FVector location, FVector extent)
