@@ -12,7 +12,7 @@ bool ShaderController::ConsolidateBoxes()
 	float proposedVolume;  // If we create one encompassing box, how much volume will that have?
 	float additiveVolume;
 	bool eaten = false;
-	UE_LOG(LogTemp, Warning, TEXT("Conslidating Boxes"));
+	//UE_LOG(LogTemp, Warning, TEXT("Conslidating Boxes"));
 
 	for (auto a : ShaderBoxes) {
 		for (auto b : ShaderBoxes) {

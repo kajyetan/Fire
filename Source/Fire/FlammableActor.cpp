@@ -38,13 +38,18 @@ void AFlammableActor::UpdateMaterialBoxes() {
 	// 40 currently the limit
 	char buf1[40];
 	char buf2[40];
-	for (int i = 0; i < FMath::Min(boxesOnFire.Num(), 100); i++) {
+	TArray<FBoxSphereBounds *> shaderBoxes = shaderController.GetBoxes();
 
-		snprintf(buf1, 40, "Box%dLocation", i);
-		snprintf(buf2, 40, "Box%dExtent", i);
+	for (int i = 0; i < FMath::Min(shaderBoxes.Num(), 100); i++) {
 
-		this->GetStaticMeshComponent()->SetVectorParameterValueOnMaterials(buf1, boxesOnFire[i]->GetComponentLocation());
-		this->GetStaticMeshComponent()->SetVectorParameterValueOnMaterials(buf2, boxesOnFire[i]->GetScaledBoxExtent());
+		snprintf(buf1, 40, "BoxLocation_%d", i);
+		snprintf(buf2, 40, "BoxExtent_%d", i);
+
+	//	UE_LOG(LogTemp, Warning, TEXT("Origin %d: %s"), i, *shaderBoxes[i]->GetBox().GetCenter().ToString());
+	//	UE_LOG(LogTemp, Warning, TEXT("Extent %d: %s"), i, *shaderBoxes[i]->GetBox().GetExtent().ToString());
+
+		this->GetStaticMeshComponent()->SetVectorParameterValueOnMaterials(buf1, shaderBoxes[i]->GetBox().GetCenter());
+		this->GetStaticMeshComponent()->SetVectorParameterValueOnMaterials(buf2, shaderBoxes[i]->GetBox().GetExtent() * 2);
 
 	}
 
@@ -65,6 +70,7 @@ void AFlammableActor::Tick(float DeltaTime) {
 	// Draw boxes -- do it here beacuse we have reference to world
 	shaderController.ConsolidateBoxes();
 	for (auto b : shaderController.GetBoxes()) {
+
 		DrawDebugBox(GetWorld(), b->GetBox().GetCenter(), b->GetBox().GetExtent(), FColor(0, 255, 0), true, 0.25f, 0, 3.0f);
 	}
 
